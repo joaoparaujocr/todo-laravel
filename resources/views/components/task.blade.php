@@ -1,21 +1,21 @@
 <li class="task">
     <div class="task-title">
-        <input type="checkbox" name="" id="">
+        <input type="checkbox" name="" id="" @if ($task['is_done']) checked @endif>
         <label>
-            {{ $title }}
+            {{ $task['title'] }}
         </label>
     </div>
     <div class="task-priority">
         <span class="bullet"></span>
         <p>
-            {{ $category }}
+            {{ $task['category']->title }}
         </p>
     </div>
     <div class="task-actions">
-        <a href={{route('tasks.edit', $id)}}>
+        <a href={{ route('tasks.edit', $task['id']) }}>
             <img src="/assets/images/edit.png" alt="">
         </a>
-        <a href={{route('tasks.delete', $id)}}>
+        <a href={{ route('tasks.delete', $task['id']) }}>
             <img src="/assets/images/trash.png" alt="">
         </a>
     </div>
