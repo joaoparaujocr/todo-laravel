@@ -1,6 +1,6 @@
 <x-layout page="TodoApp - Home">
     <x-slot:btn>
-        <a class="btn btn-primary" href="#">Criar tarefa</a>
+        <a class="btn btn-primary" href={{ route('tasks.create') }}>Criar tarefa</a>
     </x-slot:btn>
 
     <section class="graph">
@@ -33,45 +33,9 @@
         </select>
 
         <ul class="list-tasks">
-            <li class="task">
-                <div class="task-title">
-                    <input type="checkbox" name="" id="">
-                    <label>
-                        Titulo da task
-                        </h3>
-                </div>
-                <div class="task-priority">
-                    <span class="bullet"></span>
-                    <p>
-                        Prioridade da task
-                    </p>
-                </div>
-                <div class="task-actions">
-                    <a href="">
-                        <img src="/assets/images/edit.png" alt="">
-                    </a>
-                    <a href="">
-                        <img src="/assets/images/trash.png" alt="">
-                    </a>
-                </div>
-            </li>
-            <li class="task">
-                <div class="task-title">
-                    <input type="checkbox" name="" id="">
-                    <label>
-                        Titulo da task
-                        </h3>
-                </div>
-                <div class="task-priority">
-                    <span class="bullet"></span>
-                    <p>
-                        Prioridade da task
-                    </p>
-                </div>
-                <div class="task-title">
-                    editar - excluir
-                </div>
-            </li>
+            @foreach ($tasks as $task)
+                @include('components.task', $task)
+            @endforeach
         </ul>
     </section>
 </x-layout>
