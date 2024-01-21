@@ -4,8 +4,10 @@
         <option value="" disabled selected>
             Selecione uma categoria
         </option>
-        <option value="">
-            Categoria 1
-        </option>
+        @foreach ($categories as $category)
+            <option value="{{ $category->id }}" @if (!empty($selectedId) && $category->id === $selectedId) selected @endif>
+                {{ $category->title }}
+            </option>
+        @endforeach
     </select>
 </div>

@@ -2,19 +2,40 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Task;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
     public function create(Request $request) {
-        return view('tasks.create');
+        $categories = Category::all();
+
+        return view('tasks.create')->with(compact('categories'));
     }
 
-    public function edit(Request $request, int $task) {
-        return view('tasks.edit')->with(['task' => $task]);
+    public function store(Request $request) {
+        $task = $request->only(['title', 'due_date', 'description', 'category_id']);
+        $task['user_id'] = 1;
+        Task::create($task);
+
+        return redirect()->route('home');
     }
 
-    public function destroy(int $task) {
+    public function edit(Task $task) {
+        $categories = Category::all();
+
+        return view('tasks.edit')->with(compact('task', 'categories'));
+    }
+
+    public function update(Request $request, Task $task) {
+        $task->update($request->only(['title', 'due_date', 'description', 'category_id']));
+
+        return back();
+    }
+
+    public function destroy(Task $task) {
+        $task->deleteQuietly();
         return back();
     }
 }

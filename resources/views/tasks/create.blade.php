@@ -2,7 +2,7 @@
     <x-slot:btn>
         <a class="btn btn-primary" href={{ route('home') }}>Home</a>
     </x-slot:btn>
-    <form class="form">
+    <form class="form" method="POST" action="{{ route('tasks.store') }}">
         @csrf
         <h3>Crie uma nova task</h3>
         @include('components.form.input', [
@@ -13,11 +13,12 @@
         @include('components.form.input', [
             'title' => 'Data de realização da task',
             'name' => 'due_date',
-            'type' => 'date',
+            'type' => 'datetime-local',
         ])
         @include('components.form.input-select', [
             'title' => 'Categoria da task',
             'name' => 'category_id',
+            'categories' => $categories,
         ])
 
         @include('components.form.input-textarea', [
