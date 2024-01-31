@@ -17,8 +17,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'show'])->name('home');
-Route::get('/login', [AuthController::class, 'login'])->name('login');
-Route::get('/register', [AuthController::class, 'register'])->name('register');
+
+Route::controller(AuthController::class)->prefix('/auth')->name('auth.')->group(function () {
+    Route::get('/register', 'register')->name('register');
+    Route::post('/register', 'store')->name('resgister.store');
+    Route::get('/login', 'login')->name('login');
+});
 
 // Routes tasks
 Route::controller(TaskController::class)->prefix('/tasks')->name('tasks.')->group(function () {
