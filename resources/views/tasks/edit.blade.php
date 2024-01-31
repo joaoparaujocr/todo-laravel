@@ -6,6 +6,11 @@
         @method('PATCH')
         @csrf
         <h3>Editar task</h3>
+        @include('components.form.input-checkbox', [
+            'title' => 'Task concluida',
+            'name' => 'is_done',
+            'value' => $task->is_done,
+        ])
         @include('components.form.input', [
             'title' => 'Título da task',
             'placeholder' => 'Digite o título da task',

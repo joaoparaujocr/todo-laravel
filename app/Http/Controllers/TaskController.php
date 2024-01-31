@@ -29,7 +29,11 @@ class TaskController extends Controller
     }
 
     public function update(Request $request, Task $task) {
-        $task->update($request->only(['title', 'due_date', 'description', 'category_id']));
+
+        $request_data = $request->only(['title', 'due_date', 'description', 'category_id']);
+        $request_data["is_done"] = boolval($request->input("is_done")) ;
+
+        $task->update($request_data);
 
         return back();
     }
