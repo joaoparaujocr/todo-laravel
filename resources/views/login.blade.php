@@ -15,7 +15,7 @@
 
     <form class="form" method="POST" action="{{ route('auth.login.store') }}">
         @csrf
-        <h3>Faça seu Registro</h3>
+        <h3>Faça seu Login</h3>
         @include('components.form.input', [
             'title' => 'E-mail',
             'placeholder' => 'Digite o seu e-mail',
