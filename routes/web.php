@@ -20,8 +20,9 @@ Route::get('/', [HomeController::class, 'show'])->name('home');
 
 Route::controller(AuthController::class)->prefix('/auth')->name('auth.')->group(function () {
     Route::get('/register', 'register')->name('register');
-    Route::post('/register', 'store')->name('resgister.store');
+    Route::post('/register', 'registerStore')->name('resgister.store');
     Route::get('/login', 'login')->name('login');
+    Route::post('/login', 'loginStore')->name('login.store');
 });
 
 // Routes tasks

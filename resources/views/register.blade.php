@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:btn>
-        <a class="btn btn-primary" href={{ route('home') }}>Login</a>
+        <a class="btn btn-primary" href={{ route('auth.login') }}>Login</a>
     </x-slot:btn>
 
     @if ($errors->any())
@@ -12,6 +12,7 @@
             </ul>
         </div>
     @endif
+
     <form class="form" method="POST" action="{{ route('auth.resgister.store') }}">
         @csrf
         <h3>Faça seu Registro</h3>
