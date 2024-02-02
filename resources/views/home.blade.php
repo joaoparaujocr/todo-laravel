@@ -9,11 +9,19 @@
             <h2>Progresso do dia</h2>
             <hr />
             <span class="graph_header-date">
-                <img src="/assets/images/left-arrow.png" alt="">
+                <a href={{ route('home', [
+                    'date' => $prevDate,
+                ]) }}>
+                    <img src="/assets/images/left-arrow.png" alt="">
+                </a>
                 <p>
-                    11 de Dez
+                    {{ $currentDate }}
                 </p>
-                <img src="/assets/images/right-arrow.png" alt="">
+                <a href={{ route('home', [
+                    'date' => $nextDate,
+                ]) }}>
+                    <img src="/assets/images/right-arrow.png" alt="">
+                </a>
             </span>
         </div>
 
