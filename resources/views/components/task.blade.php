@@ -1,6 +1,6 @@
 <li class="task">
     <div class="task-title">
-        <input type="checkbox" name="" id="" @if ($task['is_done']) checked @endif>
+        <input type="checkbox" onchange="taskChecked(this)" data-id={{ $task['id'] }} ="" @if ($task['is_done']) checked @endif>
         <label>
             {{ $task['title'] }}
         </label>

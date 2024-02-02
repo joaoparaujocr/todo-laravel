@@ -39,4 +39,30 @@
             @endforeach
         </ul>
     </section>
+
+    <script>
+        async function taskChecked(element) {
+            const status = element.checked;
+            const id = element.dataset.id;
+            const router = '{{ route('tasks.done') }}';
+            const result = await fetch(router, {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json',
+                    'accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    status,
+                    id,
+                    _token: "{{ csrf_token() }}",
+                })
+            }).then(result => result);
+            const response = await result.json()
+            if (response.success) {
+                alert("Task atualizada")
+            } else {
+                element.checked = !status;
+            }
+        }
+    </script>
 </x-layout>

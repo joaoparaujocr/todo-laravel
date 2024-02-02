@@ -36,6 +36,7 @@ Route::controller(TaskController::class)->prefix('/tasks')->name('tasks.')->grou
         Route::get('/edit/{task}', 'edit')->name('edit');
         Route::patch('/{task}', 'update')->name('update');
         Route::get('/{task}', 'destroy')->name('delete');
+        Route::post('/done', 'taskDone')->name('done');
     });
 });
 

@@ -42,4 +42,15 @@ class TaskController extends Controller
         $task->deleteQuietly();
         return back();
     }
+
+    public function taskDone(Request $request) {
+        $task = Task::find($request->id);
+        if (!$task) {
+            return ["success" => false];
+        }
+        $task->is_done = $request->status;
+        $task->save();
+
+        return ["success" => true];
+    }
 }
